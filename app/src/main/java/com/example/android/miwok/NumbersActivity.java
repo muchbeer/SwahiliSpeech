@@ -2,7 +2,10 @@ package com.example.android.miwok;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -33,8 +36,24 @@ public class NumbersActivity extends AppCompatActivity {
         numbers[8] = "nine";
         numbers[9] = "ten";
 
-        ArrayList<String> listNumbers = new ArrayList<>();
+        ArrayList<Word> listNumbers = new ArrayList<Word>();
 
+        Word listword = new Word("One", "Moja", R.drawable.number_one);
+
+
+        listNumbers.add(listword);
+        listNumbers.add(new Word("Zero", "sufuri", R.drawable.number_two));
+        listNumbers.add(new Word("Two", "Mbili", R.drawable.number_two));
+        listNumbers.add(new Word("One", "Moja", R.drawable.number_one));
+        listNumbers.add(new Word("Three", "Tatu", R.drawable.number_three));
+        listNumbers.add(new Word("Four", "Nne", R.drawable.number_four));
+        listNumbers.add(new Word("Five", "Tano", R.drawable.number_five));
+        listNumbers.add(new Word("Six", "Sita", R.drawable.number_six));
+        listNumbers.add(new Word("Seven", "Saba", R.drawable.number_seven));
+        listNumbers.add(new Word("Eight", "Nane", R.drawable.number_eight));
+        listNumbers.add(new Word("Nine", "Tisa", R.drawable.number_nine));
+        listNumbers.add(new Word("Ten", "Kumi", R.drawable.number_ten));
+        /*
         listNumbers.add("one");
         listNumbers.add("two");
         listNumbers.add("three");
@@ -46,7 +65,16 @@ public class NumbersActivity extends AppCompatActivity {
         listNumbers.add("nine");
         listNumbers.add("ten");
 
+        */
+
         endoflist = listNumbers.size();
+
+        WordAdapter listadapter = new WordAdapter(this, listNumbers);
+
+        ListView listView = (ListView) findViewById(R.id.list);
+
+        listView.setAdapter(listadapter);
+
 
         /*
 
@@ -86,12 +114,7 @@ public class NumbersActivity extends AppCompatActivity {
 
         //while loop
 
-        while(loopnumber<endoflist) {
 
-            getNumbersFromList.setText(listNumbers.get(loopnumber));
-            addNumberToLinear.addView(getNumbersFromList);
-            loopnumber = loopnumber+1;
-            //loopnumber++;
-        }
+
     }
 }
